@@ -34,7 +34,7 @@ Matrix::Matrix(int row, int column, float **data)
     this->row = row;
     this->column = column;
     this->data = (float **)malloc(row * sizeof(float *));
-    float **pbr = data, **endbr = data + column, *pb, *endb,
+    float **pbr = data, **endbr = data + row, *pb, *endb,
           **par = this->data, **endar = this->data + this->row, *pa, *enda;
     do
     {
@@ -49,19 +49,19 @@ Matrix::Matrix(int row, int column, float **data)
     } while (par != endar);
 }
 
-Matrix::Matrix(const Matrix &B)
+Matrix::Matrix(const Matrix &B)row
 {
     this->row = B.row;
     this->column = B.column;
-    data = (float **)malloc(column * sizeof(float *));
-    float **pbr = B.data, **endbr = B.data + column, *pb, *endb,
-          **par = this->data, **endar = this->data + this->column, *pa, *enda;
+    data = (float **)malloc(row * sizeof(float *));
+    float **pbr = B.data, **endbr = B.data + row, *pb, *endb,
+          **par = this->data, **endar = this->data + this->row, *pa, *enda;
     do
     {
-        pa = *(par++) = (float *)malloc(this->row * sizeof(float));
-        enda = pa + this->row;
+        pa = *(par++) = (float *)malloc(this->column * sizeof(float));
+        enda = pa + this->column;
         pb = *(pbr++);
-        endb = pb + this->row;
+        endb = pb + this->column;
         do
         {
             *(pa++) = *(pb++);
