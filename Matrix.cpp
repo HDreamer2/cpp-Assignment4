@@ -49,7 +49,7 @@ Matrix::Matrix(int row, int column, float **data)
     } while (par != endar);
 }
 
-Matrix::Matrix(const Matrix &B)row
+Matrix::Matrix(const Matrix &B)
 {
     this->row = B.row;
     this->column = B.column;
