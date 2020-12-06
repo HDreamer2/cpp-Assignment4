@@ -104,15 +104,15 @@ Matrix Matrix::operator=(const Matrix &A)
 
     this->row = A.row;
     this->column = A.column;
-    data = (float **)malloc(column * sizeof(float *));
-    float **pbr = A.data, **endbr = A.data + column, *pb, *endb,
-          **par = this->data, **endar = this->data + this->column, *pa, *enda;
+    data = (float **)malloc(row * sizeof(float *));
+    float **pbr = A.data, **endbr = A.data + row, *pb, *endb,
+          **par = this->data, **endar = this->data + this->row, *pa, *enda;
     do
     {
-        pa = *(par++) = (float *)malloc(this->row * sizeof(float));
-        enda = pa + this->row;
+        pa = *(par++) = (float *)malloc(this->column * sizeof(float));
+        enda = pa + this->column;
         pb = *(pbr++);
-        endb = pb + this->row;
+        endb = pb + this->column;
         do
         {
             *(pa++) = *(pb++);
