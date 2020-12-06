@@ -73,7 +73,7 @@ Matrix::~Matrix()
 {
     if (!data)
         return;
-    float **p = data, **end = data + column;
+    float **p = data, **end = data + row;
     do
     {
         free(*(p++));
